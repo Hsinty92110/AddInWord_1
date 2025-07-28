@@ -1,0 +1,89 @@
+xml 
+
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+           xsi:type="TaskPaneApp">
+
+  <Id>66c0d6d5-aaa1-4564-9b8b-personal-library-addin</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Hsinty</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Personal Library" />
+  <Description DefaultValue="Associate words with contract definitions" />
+
+  <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png" />
+  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-80.png" />
+
+  <SupportUrl DefaultValue="https://your-site.com/help" />
+
+  <AppDomains>
+    <AppDomain>https://localhost:3000</AppDomain>
+  </AppDomains>
+
+  <Hosts>
+    <Host Name="Document" />
+  </Hosts>
+
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://localhost:3000/taskpane/taskpane.html"/>
+  </DefaultSettings>
+
+  <Permissions>ReadWriteDocument</Permissions>
+
+  <VersionOverrides Version="1.0">
+    <Hosts>
+      <Host Name="Document">
+        <Runtimes>
+          <Runtime resid="TaskPane.Url" />
+        </Runtimes>
+        <ExtensionPoint xsi:type="MessageReadCommandSurface">
+          <OfficeTab id="TabHome">
+            <Group id="CommandsGroup">
+              <Label resid="CommandsGroup.Label" />
+              <Icon>
+                <bt:Image size="16" resid="icon16" />
+                <bt:Image size="32" resid="icon32" />
+                <bt:Image size="80" resid="icon80" />
+              </Icon>
+              <Control xsi:type="Button" id="OpenTaskPaneButton">
+                <Label resid="OpenTaskPaneButton.Label" />
+                <Supertip>
+                  <Title resid="OpenTaskPaneButton.Label" />
+                  <Description resid="OpenTaskPaneButton.Tooltip" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="icon16" />
+                  <bt:Image size="32" resid="icon32" />
+                  <bt:Image size="80" resid="icon80" />
+                </Icon>
+                <Action xsi:type="ShowTaskpane">
+                  <SourceLocation resid="TaskPane.Url" />
+                </Action>
+              </Control>
+            </Group>
+          </OfficeTab>
+        </ExtensionPoint>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="icon16" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
+        <bt:Image id="icon32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
+        <bt:Image id="icon80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="TaskPane.Url" DefaultValue="https://localhost:3000/taskpane/taskpane.html"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="CommandsGroup.Label" DefaultValue="Personal Library"/>
+        <bt:String id="OpenTaskPaneButton.Label" DefaultValue="Open Personal Library"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="OpenTaskPaneButton.Tooltip" DefaultValue="Click to manage your word associations"/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
